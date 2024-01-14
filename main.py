@@ -9,7 +9,10 @@ def main():
 
     #p.play()
 
+    # instanciate variables for list of songs and current playing song
     sPicker = SongPicker.Songs()
+    # current_song = ""
+
 
     while True:
         # just the title of the song
@@ -21,7 +24,11 @@ def main():
         print(nextSongPath)
 
         # wack
-        time.sleep(3)
+        current_song = vlc.MediaPlayer(nextSongPath)
+        current_song.play()
+        time.sleep(1)
+        duration = current_song.get_length()
+        time.sleep((duration / 1000) - 2)
 
 def vlc_test():
     song = vlc.MediaPlayer("resources/Benjamin Lee - Sleeping (Lofi).mp3")

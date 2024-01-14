@@ -7,10 +7,11 @@ def print_hi():
 
     #p.play()
     songs = SongPicker.getSongs()
-    currentSong = SongPicker.pickSong(songs)
-    print('Now playing: ' + currentSong)
-    currentSongPath = SongPicker.getSongPath(currentSong)
-    print('Song Path: ' + currentSongPath)
+    nextSong = SongPicker.nextSong(songs)
+    print(nextSong)
+    nextSongPath = SongPicker.getSongPath(nextSong)
+    print(nextSongPath)
+
 
 
 

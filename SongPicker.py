@@ -2,30 +2,36 @@ import os
 from random import randint
 from random import shuffle
 
-songs = []
 
-def getSongs():
-    rPath = os.getcwd() + '\\resources'
-    print('Getting songs from ' + rPath + '.')
-    songs = os.listdir(rPath)
-    print(f'Got {len(songs)} songs.')
-    shuffleSongs(songs)
-    return songs
+class Songs:
+    def __init__(self):
+        self.pool = []
+        self.rPath = ""
+        self.getSongs()
 
-def shuffleSongs(songs):
-    print('Shuffling...')
-    shuffle(songs)
-    print('Shuffled.')
+    def getSongs(self):
+        self.rPath = os.getcwd() + '\\resources'
+        # print('Getting songs from ' + self.rPath + '.')
+        self.pool = os.listdir(self.rPath)
+        # print(f'Got {len(self.pool)} songs.')
+        self.shuffleSongs()
+        return self.pool
 
-def getSongPath(song):
-    rPath = os.getcwd() + '\\resources'
-    return rPath + '\\' + song
+    def shuffleSongs(self):
+        # print('Shuffling...')
+        shuffle(self.pool)
+        # print(self.pool)
+        # print('Shuffled.')
 
-def nextSong(songs):
-    print(f'Next Song: {songs[-1]}')
-    nextSong = songs.pop()
-    if (len(songs) <= 0):
-        getSongs(songs)
-        print('Reached')
-    print(f'Up next: {songs[-1]}')
-    return nextSong
+    def getSongPath(self, song):
+        return self.rPath + '\\' + song
+
+    def nextSong(self):
+        print(f'Current Song: {self.pool[-1]}')
+        nextSong = self.pool.pop()
+        if (len(self.pool) <= 0):
+            self.getSongs()
+            print('end of list - reshuffled')
+        # print(self.pool)
+        print(f'Up next: {self.pool[-1]}')
+        return nextSong

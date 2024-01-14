@@ -4,6 +4,14 @@ import time
 import os
 os.add_dll_directory(os.getcwd())
 
+def play_song(nextSongPath):
+    # wack
+    current_song = vlc.MediaPlayer(nextSongPath)
+    current_song.play()
+    time.sleep(1)
+    duration = current_song.get_length()
+    time.sleep((duration / 1000) - 2)
+
 def main():
     #p = vlc.MediaPlayer("/resources\\Benjamin Lee - Sleeping (Lofi).mp3")
 
@@ -22,13 +30,10 @@ def main():
         # just gets the path to the song
         nextSongPath = sPicker.getSongPath(nextSong)
         print(nextSongPath)
+        play_song(nextSongPath)
 
-        # wack
-        current_song = vlc.MediaPlayer(nextSongPath)
-        current_song.play()
-        time.sleep(1)
-        duration = current_song.get_length()
-        time.sleep((duration / 1000) - 2)
+
+
 
 def vlc_test():
     song = vlc.MediaPlayer("resources/Benjamin Lee - Sleeping (Lofi).mp3")

@@ -10,7 +10,7 @@ class Songs:
         self.getSongs()
 
     def getSongs(self):
-        self.rPath = os.getcwd() + '\\resources'
+        self.rPath = os.getcwd() + '\\resources\\Tracks'
         # print('Getting songs from ' + self.rPath + '.')
         self.pool = os.listdir(self.rPath)
         # print(f'Got {len(self.pool)} songs.')

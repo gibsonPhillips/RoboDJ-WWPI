@@ -39,5 +39,5 @@ def vlc_test():
 
 
 if __name__ == '__main__':
-    vlc_test()
+    main()
 
